@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h1>ЛОГИН</h1>
+
+{% comment %} Ошибки {% endcomment %}
+{% if form.errors %}
+    <p>{{ form.errors.error }}</p>
+{% endif %}
+
+<form action="{% url 'login' %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit">Логин</button>
+</form>
+<a href="{% url 'password_reset' %}">Forgot Password</a>
+{% endblock %}
